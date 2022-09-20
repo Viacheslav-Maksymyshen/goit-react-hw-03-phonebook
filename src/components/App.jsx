@@ -7,9 +7,34 @@ import styles from './App.module.css';
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: '9jACRmI3_jBfX8jsbptG6', name: 'Viktoria Max', number: '3232323' },
+      {
+        id: 'uwZMuVbdGS70CAwWcdA2y',
+        name: 'Viacheslav Max',
+        number: '5731867',
+      },
+    ],
     filter: '',
   };
+
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const contactsParse = JSON.parse(contacts);
+
+    if (contactsParse) {
+      this.setState({ contacts: contactsParse });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const nextContacts = this.state.contacts;
+    const prevContacts = prevState.contacts;
+
+    if (nextContacts !== prevContacts) {
+      localStorage.setItem('contacts', JSON.stringify(nextContacts));
+    }
+  }
 
   handleNameChange = e => {
     const { name, value } = e.target;
@@ -51,20 +76,6 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-
-  componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const contactsParse = JSON.parse(contacts);
-    if (contactsParse) {
-      this.setState({ contacts: contactsParse });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
 
   render() {
     const { filter } = this.state;
