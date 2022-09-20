@@ -6,7 +6,7 @@ function ContactList({ contacts, onDeleteContact }) {
     <ul className={styles.contactsList}>
       {contacts.map(({ id, name, number }) => (
         <li key={id} className={styles.contactItem}>
-          &#160;&#9742; {name} : {number}
+          &#160;&#160;&#9742; {name} : {number}
           <button
             className={styles.btnContact}
             onClick={() => onDeleteContact(id)}
