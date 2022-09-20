@@ -8,11 +8,11 @@ import styles from './App.module.css';
 class App extends Component {
   state = {
     contacts: [
-      { id: '9jACRmI3_jBfX8jsbptG6', name: 'Viktoria Max', number: '3232323' },
+      { id: '9jACRmI3_jBfX8jsbptG6', name: 'Viktoria Max', number: '32-32-32' },
       {
         id: 'uwZMuVbdGS70CAwWcdA2y',
         name: 'Viacheslav Max',
-        number: '5731867',
+        number: '57-31-86',
       },
     ],
     filter: '',
